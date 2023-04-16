@@ -44,7 +44,7 @@ Now, because we cant just solve this straight up, lets actually check what this 
 tt.exe: PE32+ executable (console) x86-64, for MS Windows
 ```
 We can see here that this is a windows executable file. \
-Now, lets actually reverse this program, and see what it does. The tool that I'll be using is Ghdira. \
+Now, lets actually reverse this program, and see what it does. The tool that I'll be using is Ghidra. \
 In the main function of the program, there seems to be a lot of things happening. However, this part caught my eye
 ```c
   tVar1 = time((time_t *)0x0);
@@ -58,10 +58,11 @@ In the main function of the program, there seems to be a lot of things happening
 we can see that `tVar1` takes the time. It then checks if the time is below `0x1b6e7`(112,359). If it is, it does something(presumably, printing the flag). Otherwise, it simply tells us we are too old, and exits. \
 According to https://www.unixtimestamp.com/ the time should be `Fri Jan 02 1970 07:12:39 GMT`[^2], which means we will have to time travel. So sit back everyone, and lets start building the time travel machine! \
 Now, before we get too ahead of ourselves and start chipping away at time, lets take a step back. We have the ability to modify the binary, so why not try that first? \
-the comparision and jump is being handled by 2 instructions as seen here
+the comparision and jump is being handled by 2 instructions as seen here \
 ![pic](./check_JG.png)
+
 First, `cmp` compares the two values, then `JG` will jump to the puts call if the `time` is later then the time they wanted. \
-Ghidra has an assembler that allows users to change assembly instructions. So that was what I used. I changed `JG`(Jump Greater then) to `JL`(Jump Lesser then). I then exported the edited binary as a PE, and ran it on Cygwin64 Terminal.
+Ghidra has an assembler that allows users to change assembly instructions. So that was what I used. I changed `JG`(Jump Greater then) to `JL`(Jump Lesser then). I then exported the edited binary as a PE, and ran it on Cygwin64 Terminal. \
 ![pic](./flag.png)
 
 FLAG: `LNC2023{w15h_w3_c0uLd_turn_b4ck_t1m3_988672}`
