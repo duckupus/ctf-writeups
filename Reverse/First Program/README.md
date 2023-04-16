@@ -7,7 +7,8 @@ solves: *80* <br>
 This is an easy level reversing challenge \
 files given
 - [simplere](./simplere)
-First, lets check it's strings. I like to use `rabin2`[^1] from the `radare2` framework as I can more easily control what strings are printed.
+
+First, lets check it's strings. I like to use `rabin2`[^1] from the `radare2` framework for this as I can more easily control what strings are printed.
 ```sh
 └─$ rabin2 -z simplere
 [Strings]
@@ -18,5 +19,6 @@ nth paddr      vaddr      len size section type  string
 ```
 And thats the flag! \
 FLAG: `LNC2023{s1mpl3_4m_1_r1ghT?}`
+
 [^1]: `rabin2 -z` tells radare2 to only print strings from the data section of the binary. However, you can tell it to print all strings if you want to!
 
