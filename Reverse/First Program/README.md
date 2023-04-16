@@ -7,7 +7,7 @@ solves: *80* <br>
 This is an easy level reversing challenge \
 files given
 - [simplere](./simplere)
-First, lets check it's strings. I like to use `rabin2`^[1] from the `radare2` framework as I can more easily control what strings are printed.
+First, lets check it's strings. I like to use `rabin2`[^1] from the `radare2` framework as I can more easily control what strings are printed.
 ```sh
 └─$ rabin2 -z simplere
 [Strings]
