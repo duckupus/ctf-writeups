@@ -3,6 +3,7 @@
 ```
 I can never figure out which hand to hold my racket in
 ```
+solves: *14* <br>
 
 connection info: `nc nc.lagncra.sh 8008` 
 

@@ -3,6 +3,7 @@
 ```
 Looks like a survival has written a message, find a way to read the message.
 ```
+solves: *86* <br>
 
 files given
 - [flag.jpg](./flag.jpg)
