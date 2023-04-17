@@ -9,6 +9,9 @@ Can you try accessing the file and uncover the secret message?
 ```
 solves: *31* <br>
 
+files given
+- [computer.exe](./computer.exe)
+
 The output of the `file` command tells us that it is a PE executable
 ```
 └─$ file computer.exe
