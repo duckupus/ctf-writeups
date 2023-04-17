@@ -17,7 +17,7 @@ The `file` command tells us that this is a ELF executable file, that is not stri
 └─$ file ArasakaCorp
 ArasakaCorp: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ae40a412cc2c06c2d081ac1ba94820ed61259d3e, for GNU/Linux 3.2.0, not stripped
 ```
-checksec shows that NX[^1] is enabled, but PIE is disabled. Which means we are able to ROP[^2]
+checksec shows that NX[^1] is enabled. But we are still able to ROP[^2]
 ```sh
 └─$ checksec ArasakaCorp
 [*] '/mnt/d/CTFs/lnc/3.0/pwn/Arasaka Corp/ArasakaCorp'
@@ -51,10 +51,12 @@ nth paddr      vaddr      len size section type  string
 When looking at the `login()` function, we can see the `gets` function, which is vulnerable to a buffer overflow[^3] \
 ![pic](./login_decomp.png) <br>
 using gdb with pwndbg, I was able to segfault[^4] the program. \
-![pic](./get_segfault.png) <br>
+<img src="./get_segfault.png"  width="60%" height="30%"> <br>
+
 looking at where the program segfaulted, we are then able to find the amount of padding we need to overwrite the return address. In this case, we need `16` characters \
-![pic](./found_BOF_pad.png) <br>
-Now, I have skipped some steps. Specifically, I have not painted the full picture of the binary. Below is the list of functions. I have removed the ones that we will not be focusing on for this writeup. \
+<img src="./found_BOF_pad.png"  width="60%" height="30%"> <br>
+
+Now, I have skipped some steps. Specifically, I have not painted the full picture of the binary. Below is the list of functions. I have removed the ones that we will not be focusing on for this writeup.
 ```sh
 └─$ r2 ArasakaCorp
  -- This computer has gone to sleep.
@@ -80,12 +82,11 @@ INFO: Use -AA or aaaa to perform additional experimental analysis
 ```
 The execution of the program looks like this `main -> login -> program exit` \
 There is another function called `dev` which has another bit of vulnerable code[^5]. However, we will not be using it for our exploit[^6] \
-
 In `x86-64`, when calling a function, register `rdi` is used to hold the first function argument. The rest are stored in other registers and the stack[^7]. \
 lets start crafting our exploit. \
 <br>
 The idea is to get this: `system("/bin/sh");` to gain a shell on the instance the program is on. \
-We know we have a string "/bin/sh" at `0x00402814`. We also know that `rdi` is the register responsible for holding the first argument. \
+We know we have a string "/bin/sh" at `0x00402814`. We also know that `rdi` is the register responsible for holding the first argument. 
 ```sh
 [0x00401150]> /R pop rdi
   0x004014e3                 5f  pop rdi
@@ -93,7 +94,7 @@ We know we have a string "/bin/sh" at `0x00402814`. We also know that `rdi` is t
 [0x00401150]>
 ```
 r2 has a ropgadet finder that I used to find `pop rdi`. What `pop` does is get the next value from the stack, and put it into the 1st argument. With this gadget, we can put the string address into `rdi`. \
-now that `rdi = "/bin/sh"`, all we need is to call `system()`.
+now that `rdi = "/bin/sh"`, all we need is to call `system()`. \
 final script
 ```py
 from pwn import *
