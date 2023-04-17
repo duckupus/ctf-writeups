@@ -4,10 +4,10 @@
 I can never figure out which hand to hold my racket in
 ```
 
-connection info: `nc nc.lagncra.sh 8008` \
+connection info: `nc nc.lagncra.sh 8008` 
 
 This gives us a Racket shell.
-```
+```racket
 Welcome to Racket v7.2.
 > ls
 > a
@@ -28,7 +28,7 @@ Sending to web browser...
 ```
 If it wasn't obvious here, I didn't know what I was doing. I have 0 experience with the Racket Programming language. \
 Howver, not all is lost. I asked chatGPT to generate some code to list files, and got this
-```
+```racket
 > (require file)
 
 (define files (directory-list "."))
@@ -60,7 +60,7 @@ usr
 var
 ```
 There are some interesting files here. Most notably `flag` and `key`. \
-```
+```racket
 > (define file (open-input-file "flag"))
 
 (let loop ((line (read-line file)))
@@ -73,7 +73,7 @@ There are some interesting files here. Most notably `flag` and `key`. \
 XLE2023{zuhj_hv_jnhksm_ogsrg_nrnybitkx_rdc_czx_elxxkj_cuut}
 ```
 This looks quite similar to the flag, but it seems to have been encrypted in some cipher.
-```
+```racket
 > (define file (open-input-file "key"))
 
 (let loop ((line (read-line file)))
