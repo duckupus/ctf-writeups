@@ -83,6 +83,9 @@ $
 
 FLAG: `LNC2023{SecreT_Al13n_por7a1?}`
 
+
+NOTE: According to the challange author, writing `1` into `local_14` in main was the intended path for getting into `twofa()` which was a pretty cool idea and something to keep in mind for future challenges :)
+
 [^1]: If you dont know these exploit mitigations, dont worry. You dont have to understand it to follow this writeup. However I recommend you learn more about them!
 
 [^2]: When trying to run it, I got: `/mnt/d/CTFs/lnc/3.0/pwn/Alien Portal/vuln.exe: /lib/i386-linux-gnu/libc.so.6: version 'GLIBC_2.34' not found (required by /mnt/d/CTFs/lnc/3.0/pwn/Alien Portal/vuln.exe)` As it turns out, this was compiled for a newer `glibc` then my debian WSL has, so I had to run it on kali... Oh well!
