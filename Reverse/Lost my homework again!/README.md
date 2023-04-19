@@ -32,7 +32,7 @@ Not that you should be running this program anyway.
 Both outputs are required to reconstruct the original value. Good luck!
 ```
 the `virus1.s` and `virus2.s` are assembly files. I will explain the assembly in a high level[^1]. \
-`virus2.s` is very similar to `virus1.s`, with `virus1.s` having a bit of extra instructions at the end. \
+`virus2.s` is very similar to `virus1.s`, with `virus1.s` having a bit of extra instructions at the end.
 ### virus1.s
 ```c
 output	= input
