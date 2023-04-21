@@ -6,6 +6,7 @@ Get into their mainframe, expose their unethical practices to the international 
 ```
 
 solves: *8* <br>
+challenge difficulty: `hard` <br>
 
 files given
 - [ArasakaCorp](./ArasakaCorp)
