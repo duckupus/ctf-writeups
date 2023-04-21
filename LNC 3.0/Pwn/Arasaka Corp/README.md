@@ -10,7 +10,7 @@ solves: *8* <br>
 files given
 - [ArasakaCorp](./ArasakaCorp)
 
-connection info: ` nc nc.lagncra.sh 8000` <br>
+connection info: `nc nc.lagncra.sh 8000` <br>
 
 The `file` command tells us that this is a ELF executable file, that is not stripped.
 ```sh
