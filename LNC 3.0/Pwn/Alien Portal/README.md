@@ -31,10 +31,9 @@ It first reads the flag then takes user input. It compares `flag` with the `inpu
 We are able to abuse `gets` to overwrite the `flag`, `ck`, and `local_14` variables, as well as overwrite the return address \
 Now that we have identified the attack vector, lets first try to find the offset. If we are able to do so, we should be able to return to the `twofa()` function, which has the next step. \
 <br>
-Lets run[^2] it on `gdb`, and try to find the offset. I'm using [pwndbg](https://github.com/pwndbg/pwndbg). \
+I tried to run[^2] it on `gdb`, and try to find the offset using [pwndbg](https://github.com/pwndbg/pwndbg). \
 However, when trying to get the offset, I keep getting an error: `<Could not read memory at 0x6175615d>`. It's probably something to do with `32bit` binary shenanigans. \
 Luckily, you dont actually need to ret2win in order to solve the challenge. \
-Below was how I solved the challenge \
 <br>
 ## Defeating `strcmp`
 There is another idea. Instead of overwriting the return address, we can simply defeat the check, and end up in `two_fa()` anyway! <br>
