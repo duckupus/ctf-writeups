@@ -1,6 +1,8 @@
 # lnc-3.0-writeups
 my Lag and Crash 3.0 (2023) writeups
 
+In LnC 3.0, I played as part of the team `Glitched Force`
+
 ## Reverse
 [First Program](./Reverse/First%20Program/README.md)  
 [Time Travel](./Reverse/Time%20Travel/README.md)  
