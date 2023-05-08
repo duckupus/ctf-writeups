@@ -23,4 +23,4 @@ In LnC 3.0, I played as part of the team `Glitched Force`
 [Invisibility](./Misc/Invisibility/README.md)  
 
 ## Boot to Root
-[Pickle Rick](./Boot%20To%20Root/Pickle%20Rick/README.md)  
+[Pickle Rick](./Boot%20to%20Root/Pickle%20Rick/README.md)  
